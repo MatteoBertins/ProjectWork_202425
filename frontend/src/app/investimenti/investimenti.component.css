@@ -1,0 +1,303 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Main content */
+.content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  background-color: #f4f4f4;
+  height: 100vh;
+  width: auto; /* importante per evitare overflow orizzontale */
+}
+
+/* Headings */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #111827;
+}
+
+/* Card */
+.card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+#add-asset {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+#add-asset:hover {
+  background-color: #2563eb;
+}
+
+#add-asset svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
+
+#calculate {
+  background-color: #10b981;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#calculate:hover {
+  background-color: #059669;
+}
+
+/* Table */
+#portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+
+#portfolio-table th,
+#portfolio-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+#portfolio-table thead {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+#portfolio-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+#portfolio-table tbody tr:hover {
+  background-color: #e5e7eb;
+}
+
+#portfolio-table td {
+  color: #374151;
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Total return text */
+.total-return {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+  outline: none;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+  background-color: white;
+  appearance: none; /* per togliere la freccia default su Safari */
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Modal actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #10b981;
+  color: white;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #059669;
+}
+
+#close-modal {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+#close-modal:hover {
+  background-color: #d1d5db;
+}
+
+/* Borders for color coding */
+.bordo-0 { border-left: 5px solid #0d6efd; }  /* blu */
+.bordo-1 { border-left: 5px solid #198754; }  /* verde */
+.bordo-2 { border-left: 5px solid #ffc107; }  /* giallo */
+.bordo-3 { border-left: 5px solid #dc3545; }  /* rosso */
+.bordo-4 { border-left: 5px solid #0dcaf0; }  /* azzurro */
+
+/* Keyframe for modal fadeIn */
+@keyframes fadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  #add-asset {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #calculate {
+    width: 100%;
+  }
+
+  #portfolio-table th,
+  #portfolio-table td {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row; /* Forza la direzione da sinistra a destra */
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 0;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+app-spalla-sx {
+  position: fixed; /* fissa la sidebar */
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+.content {
+  margin-left: 190px; /* Sposta il contenuto a destra della sidebar */
+  height: 100vh;
+  overflow-y: auto;
+}

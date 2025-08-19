@@ -1,0 +1,77 @@
+  <div class="layout">
+
+    <app-spalla-sx></app-spalla-sx>
+<main class="content">
+  <h2>Saldo Conto</h2>
+  <section class="balance-card" aria-label="Saldo corrente del conto">
+    <span>Saldo disponibile</span>
+    <span id="saldo">{{saldoDisponibile| currency : 'EUR'}}</span>
+  </section>
+
+  <section class="monthly-summary" aria-label="Riepilogo spese mensili">
+    <div class="month-card">
+      <div class="month-header">
+        <h4>Mese Precedente</h4>
+      </div>
+      <p class="amount negativo">{{uscitePrecedenti | currency: 'EUR'}} </p>
+      <p class="amount positivo">+ {{entratePrecedenti | currency: 'EUR'}} </p>
+
+      <p class="info">Spese totali del mese scorso</p>
+    </div>
+    <div class="month-card">
+      <div class="month-header">
+        <h4>Mese Corrente</h4>
+      </div>
+   <p class="amount negativo">{{usciteCorrenti | currency: 'EUR' }} </p>
+      <p class="amount positivo"> + {{entrareCorrenti | currency: 'EUR'}} </p>
+      <p class="info">Spese aggiornate in tempo reale</p>
+    </div>
+
+  </section>
+
+
+ <form class="transaction-form" [formGroup]="formTransazione">
+      <input type="date" id="date" name="date" formControlName="data" [max]="oggi"/>
+      <select id="category" formControlName="tipologiaTransazione">
+        <option value="" disabled selected>Categoria</option>
+        <option value="1">Entrata</option>
+        <option value="2">Uscita</option>
+      </select>
+      <input type="text" id="descrizione" name="descrizione" placeholder="Descrizione" formControlName="descrizione" />
+      <input type="number" placeholder="Importo" step="0.01" required formControlName="importo" />
+      <button type="submit" (click)="saveTransazione()">Aggiungi</button>
+    </form>
+  <section class="transactions" aria-label="Elenco transazioni recenti">
+    <h3>Transazioni Recenti</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Categoria</th>
+          <th>Descrizione</th>
+          <th>Importo (€)</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-list">
+        <tr *ngFor="let transazione of transazioni">
+          <td>{{transazione.data | date : 'dd/MM/yyyy'}}</td>
+          <td> <span *ngIf="transazione.tipologiaTransazione == 1" style="color: #16a34a;">
+              {{transazione.tipologiaTransazione == 1 ? 'Entrata' : 'Uscita'}} </span>
+          <span *ngIf="transazione.tipologiaTransazione == 2" style="color: #f10404;">
+              {{transazione.tipologiaTransazione == 1 ? 'Entrata' : 'Uscita'}} </span></td>
+          <td>{{transazione.descrizione}}</td>
+          <td style="  color: #16a34a;" *ngIf="transazione.tipologiaTransazione == 1">{{transazione.importo | currency :
+            'EUR'}}</td>
+          <td style="color: #f10404;" *ngIf="transazione.tipologiaTransazione == 2">{{transazione.importo | currency :
+            'EUR'}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+   
+  </section>
+</main>
+  </div>
+

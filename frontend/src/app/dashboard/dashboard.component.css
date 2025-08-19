@@ -1,0 +1,272 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
+  color: #1f2937;
+  line-height: 1.6;
+  overflow-x: hidden; /* evita scroll orizzontale */
+}
+
+/* Layout flex con sidebar e contenuto */
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar */
+app-spalla-sx {
+  flex: 0 0 260px; /* larghezza fissa 260px */
+  height: 100vh;
+  background-color: #ffffff; /* opzionale, per vedere la sidebar */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  position: fixed; /* sidebar fissa */
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Contenuto principale */
+.content {
+  margin-left: 220px; /* margine per far spazio alla sidebar */
+  flex: 1;
+  height: 100vh;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  background-color: #f4f6f8;
+}
+
+/* Titoli */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: #374151;
+}
+
+/* ... il resto del CSS rimane uguale ... */
+
+
+/* Scheda saldo */
+.balance-card {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Tabella transazioni */
+.transactions table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.transactions th,
+.transactions td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.transactions thead {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.transactions tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.transactions tbody tr:hover {
+  background-color: #e5e7eb;
+}
+
+.transactions td {
+  color: #374151;
+}
+
+.transactions td:nth-child(4) {
+  font-weight: bold;
+  color: #16a34a;
+}
+.transactions td:nth-child(5) {
+  font-weight: bold;
+  color: #f10404;
+}
+
+
+
+
+.transaction-form {
+  margin-top: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.transaction-form input,
+.transaction-form select,
+.transaction-form button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  transition: border-color 0.2s ease;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.transaction-form button {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.transaction-form button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  .transaction-form {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+.monthly-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.month-card {
+  flex: 1 1 280px;
+  background: #ffffff;
+  border-left: 6px solid #3b82f6;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.month-card:hover {
+  transform: translateY(-4px);
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.month-header h4 {
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  color: white;
+}
+
+.badge.corrente {
+  background-color: #3b82f6;
+}
+
+.badge.precedente {
+  background-color: #6b7280;
+}
+
+.amount {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.amount.negativo {
+  color: #dc2626;
+}
+.amount.positivo {
+  color: #098807;
+}
+
+.info {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+/* Sidebar sinistra */
+app-spalla-sx {
+  flex-shrink: 0;
+  width: 260px;
+  height: 100%;
+}
+.layout {
+  display: flex;
+  height: 100vh; /* 100% viewport height */
+  width: 100vw;
+  overflow: hidden;
+  
+}
+/* Contenuto principale */
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #f4f4f4; /* opzionale */
+}
+body{
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,51 @@
+<div class="layout">
+
+  <app-spalla-sx></app-spalla-sx>
+
+  <main class="content">
+    <h1>Simulazione Finanziamento</h1>
+    <form id="loan-form" [formGroup]="prestitoForm">
+      <label for="purpose">Motivo del finanziamento:</label>
+      <select id="purpose" name="purpose" required formControlName="motivo">
+        <option value="">-- Seleziona --</option>
+        <option value="auto">Acquisto auto</option>
+        <option value="casa">Ristrutturazione casa</option>
+        <option value="vacanza">Vacanza</option>
+        <option value="matrimonio">Matrimonio</option>
+        <option value="consolidamento">Consolidamento debiti</option>
+        <option value="altro">Altro</option>
+      </select>
+
+      <label for="amount">Importo (€):</label>
+      <input type="number" id="amount" formControlName="importo" />
+
+      <label for="years">Durata (anni):</label>
+      <input type="number" id="years" formControlName="durata" />
+
+      <label for="rate-type">Tipo di tasso:</label>
+      <select id="rate-type" name="rate-type" required formControlName="tipoTasso">
+        <option value="">-- Seleziona --</option>
+        <option value="FISSO">Fisso</option>
+        <option value="VARIABILE">Variabile</option>
+      </select>
+
+
+      <label>
+        <input type="checkbox" id="assicurazione" name="assicurazione" formControlName="assicurazione" />
+        Includi assicurazione (1% del capitale)
+      </label>
+
+      <section id="loan-result" aria-live="polite"
+        *ngIf="finanziamentoCalcolato.costoTotale != 0 && finanziamentoCalcolato.rataMensile != 0 && finanziamentoCalcolato.totInteressi != 0">
+        <p><strong>Rata mensile:</strong> <span id="result-purpose">{{finanziamentoCalcolato.rataMensile}} </span></p>
+        <p><strong>Costo totale Finanziamento</strong> <span
+            id="monthly-payment">{{finanziamentoCalcolato.costoTotale}}</span></p>
+        <p><strong>Totale interessi pagati:</strong> <span
+            id="total-cost">{{finanziamentoCalcolato.totInteressi}}</span></p>
+      </section>
+      <button type="submit" id="calculate-btn" (click)="calcolaRataMensile()">Calcola rata e costo totale</button>
+    </form>
+
+
+  </main>
+</div>
