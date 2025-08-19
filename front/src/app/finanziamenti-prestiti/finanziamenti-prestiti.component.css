@@ -1,0 +1,111 @@
+main.content {
+  flex-grow: 1;
+  background-color: white;
+  padding: 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+main.content h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: #004481;
+  align-self: flex-start;
+}
+
+form#loan-form {
+  width: 100%;
+  background: #f0f4fb;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 18px rgba(0, 68, 129, 0.15);
+}
+
+form#loan-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: #003366;
+}
+
+form#loan-form input[type="number"],
+form#loan-form select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #cfdcec;
+  border-radius: 8px;
+  outline-offset: 2px;
+  transition: border-color 0.3s;
+}
+
+form#loan-form input[type="number"]:focus,
+form#loan-form select:focus {
+  border-color: #007bff;
+}
+
+form#loan-form input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+button#calculate-btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #004481;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button#calculate-btn:hover {
+  background-color: #005db8;
+}
+
+section#loan-result {
+  margin-top: 2.5rem;
+  width: 100%;
+  background: #d9e6fb;
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  color: #003366;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 68, 129, 0.1);
+}
+.layout {
+  width: 100vw;
+  overflow: hidden;
+  /* rimuovi display:flex */
+}
+
+app-spalla-sx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+
+main.content {
+  margin-left: 200px;  /* <-- spazio per la sidebar fissa */
+  flex-grow: 1;
+  background-color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+}

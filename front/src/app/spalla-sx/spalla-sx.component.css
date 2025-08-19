@@ -1,0 +1,98 @@
+nav.sidebar {
+  background-color: #003366;
+  width: 260px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+nav.sidebar h1 {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #00aaff;
+  letter-spacing: 1px;
+}
+
+nav.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav.sidebar a:hover,
+nav.sidebar a.active {
+  background-color: #007acc;
+}
+
+nav.sidebar a svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.submenu-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-group > a {
+  cursor: pointer;
+}
+
+.submenu {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #002a4d;
+  border-left: 2px solid #007acc;
+  margin-bottom: 0.5rem;
+  border-radius: 0 0 6px 6px;
+}
+
+.submenu a {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  margin: 0.2rem 0;
+  color: #e0f7ff;
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.submenu a:hover,
+.submenu a.active {
+  background-color: #005a99;
+  color: white;
+}
+
+.arrow {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+  color: #00aaff;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Optional reset and layout */
+:host {
+  display: block;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
